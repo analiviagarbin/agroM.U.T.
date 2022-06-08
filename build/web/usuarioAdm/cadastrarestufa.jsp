@@ -80,17 +80,20 @@
                                     <div class="col-6"><input type="text" placeholder="Descrição" class="form-control" name="descricaoEstufa" MAXLENGTH=60></div>
                                     <div class="col-2"><input type="text" placeholder="Capacidade" class="form-control" name="capacidadeEstufa" MAXLENGTH=60></div>
                                     <div class="col-4">
-                                    <tr>
-                                        <th>Produto:</th>
-                                        <td>
-                                            <select name="idProduto" class="form-select">
-                                                <c:forEach var="produto" items="${nomeprodutos}">
-                                                    <option value="${produto.idProduto}">
-                                                        ${produto.descricaoProduto}</option>
-                                                </c:forEach>
-                                            </select>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <th>Produto:</th>
+                                            <td class="toclone">
+                                                <select name="idProduto">
+                                                    <c:forEach var="produto" items="${produtos}">
+                                                        <option value="${produto.idProduto}">
+                                                            ${produto.descricaoProduto}
+                                                        </option>
+                                                    </c:forEach>
+                                                </select>
+                                                <button type="button" class="add">+</button>
+                                                <button type="button" class="remove">-</button>
+                                            </td>
+                                        </tr>
                                     </div>
                                 </div>
                         </div>
@@ -108,6 +111,22 @@
             <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
             <script src="usuarioAdm/assets/js/main.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
+
+            <script type="text/javascript">
+                function adicionar() {
+                    var ElementoClonado = $(this.parentNode).clone();
+                    $('.wrapper').append(ElementoClonado);
+                    $('.add').on("click", adicionar);
+                    $('.remove').on("click", remover);
+                    $(this).unbind("click");
+
+                }
+                function remover() {
+                    $(this.parentNode).remove();
+                }
+                $('.add').on("click", adicionar);
+                $('.remove').on("click", remover);
+            </script>
     </body>
 </html>
 

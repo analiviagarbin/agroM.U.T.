@@ -37,7 +37,7 @@
     </head>
 
     <body>
-        <div class="container-fluid">
+        <div class="container-fluid bg-white">
             <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-between py-3 mb-4 border-bottom">
 
                 <a href="index.jsp" class="d-flex align-items-center col-md-2 mb-2 mb-md-0 text-dark text-decoration-none ps-5">
@@ -46,7 +46,7 @@
 
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ps-5">
                     <li><a href="index.jsp" class="nav-link px-2 link-dark verde">Início</a></li>
-                    <li><a href="#" class="nav-link px-2 link-dark verde">Arduíno</a></li>
+                    <li><a href="arduino.jsp" class="nav-link px-2 link-dark verde">Arduíno</a></li>
                     <li><a href="adquirir.jsp" class="nav-link px-2 link-dark verde">Adquirir</a></li>
                 </ul>
 

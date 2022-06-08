@@ -20,6 +20,15 @@
 
         <style>
 
+            .texto-formatado{
+                text-align: justify;
+                text-justify: inter-word;
+            }
+
+            .texto-branco{
+                color: white;
+            }
+
             .polygon {
                 position: fixed;
                 height: 100%;
@@ -27,7 +36,7 @@
                 top: 0;
                 left: 0;
                 background: linear-gradient(45deg, #178f2b, #8dfc17);
-                clip-path: polygon(100% 13%, 100% 14%, 100% 100%, 46% 100%);
+                clip-path: polygon(0 0, 46% 0, 35% 100%, 0% 100%);
                 z-index: -1;
             }
 
@@ -36,9 +45,9 @@
             }
 
             .botao-verde {
-                color: rgb(23, 143, 43);
-                border-color: rgb(23, 143, 43);
-                background-color: white;
+                color: white;
+                border-color: white;
+                background-color: none;
             }
 
             .botao-verde:hover {
@@ -120,22 +129,42 @@
             </div>
             <div class="row flex-lg-row-reverse align-items-center g-5">
                 <div class="col- col-sm-8 col-lg-6">
-                    <img src="assets/images/estufa1.png" class="d-block mx-lg-auto img-fluid" alt="Estufa" width="700"
+                    <img src="assets/images/arduino-logo.png" class="d-block mx-lg-auto img-fluid mb-4" alt="Logo Arduíno" width="150"
                          loading="lazy">
+                    <br>
+                    <br>
+                    <h5 class="lead texto-formatado">
+                        O que é Arduino?
+                        <br>
+                        Arduíno é uma plataforma de desenvolvimento de 
+                        projetos eletrônicos (ou prototipagem eletrônica), 
+                        constituída tanto de hardware e software.
+                        <br>
+                        <br>
+                        <br>
+                        Por que utilizar?
+                        <br>
+                        As principais razões para se utilizar a plataforma Arduino em seus projetos são: 
+                        Baixo custo de prototipagem, softwares de simulação gratuitos disponíveis, fácil de programar,
+                        grande número de tutoriais, artigos e projetos na internet, extensa comunidade, não requer 
+                        grandes conhecimentos prévios de eletrônica/programação.
+                    </h5>
+
                 </div>
                 <div class="col-lg-6">
-                    <img src="assets/images/logo-preta.png" width="150px" class="mb-4">
-                    <h1 class="display-4 fw-bold lh-1 mb-3 texto">
-                        Um passo em direção ao futuro do setor agrícola!
+                    <img src="assets/images/LOGO-BRANCA.png" width="150px" class="mb-4">
+                    <h1 class="display-4 fw-bold lh-1 mb-3 texto texto-branco">
+                        Arduíno
                     </h1>
-                    <p class="lead">
-                        Conheça a robotização do monitoramento de estufas desenvolvida para alavancar a produção 
-                        de alimentos orgânicos.
+                    <p class="lead texto-branco">
+                        Conheça a tecnologia de automação que
+                        <br>
+                        promete reescrever o futuro.
                     </p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-5">
-                        <a href="arduino.jsp">
-                            <button type="button" class="btn btn-dark btn-lg px-4 me-md-2 verde-fundo">
-                                Arduíno
+                        <a href="index.jsp">
+                            <button type="button" class="btn btn-outline-dark btn-lg px-4 me-md-2 botao-verde">
+                                Início
                             </button>
                         </a>
                         <a href="adquirir.jsp">
@@ -144,45 +173,18 @@
                             </button>
                         </a>
                     </div>
-                    <div class="display-8 lh-1 mt-4 mb-3">
-                        <h5 class="lead pb-2">
-                            Nos siga nas redes sociais: 
-                        </h5>
-                        <ul class="nav col-md-2 list-unstyled d-flex">
-                            <li class="mb-3">
-                                <a class="text-muted" href="#">
-                                    <svg class="bi" width="20" height="20">
-                                    <use xlink:href="#instagram" />
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="ms-2">
-                                <a class="text-muted" href="#">
-                                    <svg class="bi" width="20" height="20">
-                                    <use xlink:href="#facebook" />
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="ms-2">
-                                <a class="text-muted" href="#">
-                                    <svg class="bi" width="20" height="20">
-                                    <use xlink:href="#twitter" />
-                                    </svg>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+
                 </div>
             </div>
         </div>
 
     </body>
 
-    <jsp:include page="footer.jsp"/>
+    <jsp:include page="footer2.jsp"/>
 
-        <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 </html>
