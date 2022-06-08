@@ -1,0 +1,99 @@
+create table administrador (
+ id_adm serial not null,
+ nome_adm varchar(60),
+ login_adm varchar(20),
+ senha_adm varchar(20),
+ constraint pk_adm primary key(id_adm)
+);
+
+create table usuario (
+ id_usuario serial  not null,
+ codigo_usuario varchar (04),
+ nome_usuario varchar(60),
+ email_usuario varchar(60),
+ celular_usuario varchar(20),
+ login_usuario varchar(20),
+ senha_usuario varchar(20),
+ datanasc_usuario date,
+ cpf_usuario char(14),
+ cep_usuario char(09),
+ uf_usuario char(02),
+ cidade_usuario varchar(60),
+ bairro_usuario varchar(60),
+ rua_usuario varchar(60),
+ num_usuario varchar(10),
+ constraint pk_usuario primary key(id_usuario)
+);
+
+create table usuarioadm(
+ id_usuarioadm serial not null,
+ cnpj_usuarioadm varchar(20),
+ tipo_usuarioadm varchar(10),
+ status_usuarioadm char (1),
+ id_usuario integer not null,
+ constraint pk_usuarioadm primary key(id_usuarioadm),
+ constraint fk_usuario_usuarioadm foreign key(id_usuario) 
+	references usuario(id_usuario)
+);
+
+create table usuariofunc (
+ id_usuariofunc serial not null,
+ salario_usuariofunc varchar(30),
+ status_usuariofunc varchar(10),
+ id_usuario integer not null,
+ constraint pk_usuariofunc primary key(id_usuariofunc),
+ constraint fk_usuario_usuariofunc foreign key(id_usuario)
+	references usuario(id_usuario)
+);
+
+create table estufa (
+ id_estufa serial not null,
+ descricao_estufa varchar(20),
+ capacidade_estufa varchar(10),
+ temperaturaatual varchar(10),
+ umidadeatual varchar(10),
+ status_estufa varchar(10),
+ id_usuarioadm integer,
+ constraint pk_estufa primary key(id_estufa),
+ constraint fk_produto_usuarioadm foreign key(id_usuarioadm) 
+           references usuarioadm(id_usuarioadm)
+);
+
+create table usuarioestufa (
+ id_usuario integer not null,
+ id_estufa integer not null,
+ constraint pk_usuario_estufa primary key(id_usuario, id_estufa),
+ constraint fk_usuario_est foreign key(id_usuario)
+	references usuario(id_usuario),
+ constraint fk_estufa_usu foreign key(id_estufa)
+	references estufa(id_estufa)
+);
+
+create table produto(
+ id_produto serial not null,
+ especie_produto varchar(60),
+ tempocultivo_produto integer,
+ temperatura_produto varchar(10),
+ umidade_produto varchar(10),
+ descricao_produto varchar(60),
+ unidade_produto integer,
+ status_produto char(10),
+ id_usuarioadm integer,
+ constraint pk_produto primary key(id_produto),
+ constraint fk_produto_usuarioadm foreign key(id_usuarioadm) 
+           references usuarioadm(id_usuarioadm)
+);
+
+create table producao (
+ id_produto integer not null,
+ id_estufa integer not null,
+ dataplantio_producao date,
+ producaoesperada integer,
+ constraint pk_producao primary key(id_produto, id_estufa),
+ constraint fk_producao_prod foreign key(id_produto)
+	references produto(id_produto),
+ constraint fk_producao_est foreign key(id_estufa)
+	references estufa(id_estufa)
+);
+
+ 
