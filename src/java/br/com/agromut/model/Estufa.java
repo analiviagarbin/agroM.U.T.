@@ -5,15 +5,23 @@ public class Estufa {
      private UsuarioAdm idUsuarioAdm;
      private String descricaoEstufa;
      private String capacidadeEstufa;
-     private String temperaturaEstufa;
-     private String umidadeEstufa;
      private String statusEstufa;
+     
 
     public Estufa() {
     }
 
     public Estufa(Integer idEstufa) {
         this.idEstufa = idEstufa;
+    }
+
+    
+    public Estufa(Integer idEstufa, UsuarioAdm idUsuarioAdm, String descricaoEstufa, String capacidadeEstufa, String statusEstufa) {
+        this.idEstufa = idEstufa;
+        this.idUsuarioAdm = idUsuarioAdm;
+        this.descricaoEstufa = descricaoEstufa;
+        this.capacidadeEstufa = capacidadeEstufa;
+        this.statusEstufa = statusEstufa;
     }
 
     public Integer getIdEstufa() {
@@ -48,22 +56,6 @@ public class Estufa {
         this.capacidadeEstufa = capacidadeEstufa;
     }
 
-    public String getTemperaturaEstufa() {
-        return temperaturaEstufa;
-    }
-
-    public void setTemperaturaEstufa(String temperaturaEstufa) {
-        this.temperaturaEstufa = temperaturaEstufa;
-    }
-
-    public String getUmidadeEstufa() {
-        return umidadeEstufa;
-    }
-
-    public void setUmidadeEstufa(String umidadeEstufa) {
-        this.umidadeEstufa = umidadeEstufa;
-    }
-
     public String getStatusEstufa() {
         return statusEstufa;
     }
@@ -72,15 +64,5 @@ public class Estufa {
         this.statusEstufa = statusEstufa;
     }
 
-    public Estufa(Integer idEstufa, UsuarioAdm idUsuarioAdm, String descricaoEstufa, String capacidadeEstufa, String temperaturaEstufa, String umidadeEstufa, String statusEstufa) {
-        this.idEstufa = idEstufa;
-        this.idUsuarioAdm = idUsuarioAdm;
-        this.descricaoEstufa = descricaoEstufa;
-        this.capacidadeEstufa = capacidadeEstufa;
-        this.temperaturaEstufa = temperaturaEstufa;
-        this.umidadeEstufa = umidadeEstufa;
-        this.statusEstufa = statusEstufa;
-    }
-
-   
+    
 }

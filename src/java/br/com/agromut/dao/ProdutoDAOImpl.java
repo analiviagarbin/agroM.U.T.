@@ -312,13 +312,13 @@ public class ProdutoDAOImpl implements GenericDAO {
         return produtos;
     }
 
-    @Override
+@Override
     public List<Object> listar() {
         List<Object> nomeprodutos = new ArrayList<>();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         
-        String sql = "select * from produto order by descricao_produto";
+        String sql = "select * from produto order by descricao_produto;";
         
         try {
             stmt = conn.prepareStatement(sql);
@@ -327,11 +327,11 @@ public class ProdutoDAOImpl implements GenericDAO {
             while (rs.next()) {
                 Produto produto = new Produto();
                 produto.setIdProduto(rs.getInt("id_produto"));
-                produto.setDescricaoProduto(rs.getString("descricao_produto"));
+                produto.setDescricaoProduto("descricao_produto");
                 nomeprodutos.add(produto);
             }   
             } catch (Exception ex) {
-            System.out.println("Problemas ao listar nomeprodutos! Erro: " + ex.getMessage());
+            System.out.println("Problemas ao listar produtos! Erro: " + ex.getMessage());
             ex.printStackTrace();
                     
         } finally {

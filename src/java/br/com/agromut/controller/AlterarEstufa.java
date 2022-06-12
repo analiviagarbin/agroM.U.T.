@@ -23,9 +23,8 @@ public class AlterarEstufa extends HttpServlet {
 
             Integer idEstufa = Integer.parseInt(request.getParameter("idEstufa"));
             Integer idUsuarioAdm = Integer.parseInt(request.getParameter("idusuarioAdm"));
-            String capacidadeestufa = request.getParameter("capacidadeEstufa");
-            String temperaturaEstufa = request.getParameter("temperaturaEstufa");
-            String umidadeEstufa = request.getParameter("umidadeEstufa");
+            String descricaoEstufa = request.getParameter("descricaoEstufa");
+            String capacidadeEstufa = request.getParameter("capacidadeEstufa");
             String statusEstufa = request.getParameter("statusEstufa");
 
             String mensagem = null;
@@ -33,9 +32,7 @@ public class AlterarEstufa extends HttpServlet {
             Estufa estufa = new Estufa();
             estufa.setIdEstufa(idEstufa);
             estufa.setIdUsuarioAdm(new UsuarioAdm(idUsuarioAdm));
-            estufa.setCapacidadeEstufa(capacidadeestufa);
-            estufa.setTemperaturaEstufa(temperaturaEstufa);
-            estufa.setUmidadeEstufa(umidadeEstufa);
+            estufa.setCapacidadeEstufa(capacidadeEstufa);
             estufa.setStatusEstufa(statusEstufa);
 
             try {

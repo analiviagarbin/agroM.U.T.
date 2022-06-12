@@ -18,8 +18,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/usuarioAdm/assets/css/cs-skin-elastic.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/usuarioAdm/assets/css/style.css">
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+        <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
 
         <style>
             #weatherWidget .currentDesc {
@@ -76,7 +79,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="box-title">Estufas </h4>
+                                <h4 class="box-title">Estufas Inativas</h4>
                             </div>
                             <div class="card-body--">
                                 <div class="table-stats order-table ov-h">
@@ -86,11 +89,8 @@
                                                 <th class="serial">#</th>
                                                 <th>Descrição </th>
                                                 <th>Capacidade </th>
-                                                <th>Produto </th>
-                                                <th>Temperatura Atual </th>
-                                                <th>Umidade Atual </th>
                                                 <th>Status </th>
-                                                <th>Alterar </th>
+                                                <th> </th>
                                             </tr>
                                         </thead>
                                         <tbody>                                                
@@ -102,57 +102,17 @@
                                             <tr>
                                                 <td class="serial"><%=estufa.getIdEstufa()%></td>
                                                 <td class="serial"><%=estufa.getDescricaoEstufa()%></td>
-                                                <td align="center"><%=estufa.getCapacidadeEstufa()%></td>
-                                                <td align="center">Produto<%=estufa.getCapacidadeEstufa()%></td>
-                                                <td>
-                                                    <button class="btn" data-bs-toggle="modal" data-bs-target="#temperatura" type="button">Monitorar</button>
-                                                </td>
-                                                <td>
-                                                    <button class="btn" data-bs-toggle="modal" data-bs-target="#umidade" type="button">Monitorar</button>
-                                                </td>
+                                                <td align="left"><%=estufa.getCapacidadeEstufa()%></td>
                                                 <td>
                                                     <a href="AtivarEstufa?idestufa=<%=estufa.getIdEstufa()%>" class="button badge badge-danger">Ativar</a>
                                                 </td>
-                                                <td align="center">
-                                                    <a href="CarregarEstufa?idEstufa=<%=estufa.getIdEstufa()%>" class="button badge badge-primary">Alterar</a>
-                                                </td>
+                                                <td> </td>
                                             </tr>
                                             
                                             <% 
                                                 }
                                             %>
-
-                                        <!-- Modal Monitorar Temp -->
-                                        <div class="modal fade" id="temperatura">
-                                            <div class="modal-dialog modal-dialog-centered modal-xl">
-                                                <div class="modal-content">
-                                                    <div class="modal-body">
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                                        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-                                                            <div class="col-lg-12">
-                                                                Aqui
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         
-                                        <!-- Modal Monitoramento Umidade -->
-                                        <div class="modal fade" id="umidade">
-                                            <div class="modal-dialog modal-dialog-centered modal-xl">
-                                                <div class="modal-content">
-                                                    <div class="modal-body">
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                                        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-                                                            <div class="col-lg-12">
-                                                                Aqui
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         </tbody>
                                     </table>
                                 </div>

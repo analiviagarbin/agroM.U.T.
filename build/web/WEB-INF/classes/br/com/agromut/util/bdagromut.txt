@@ -50,12 +50,10 @@ create table estufa (
  id_estufa serial not null,
  descricao_estufa varchar(20),
  capacidade_estufa varchar(10),
- temperaturaatual varchar(10),
- umidadeatual varchar(10),
  status_estufa varchar(10),
  id_usuarioadm integer,
  constraint pk_estufa primary key(id_estufa),
- constraint fk_produto_usuarioadm foreign key(id_usuarioadm) 
+ constraint fk_estufa_usuarioadm foreign key(id_usuarioadm) 
            references usuarioadm(id_usuarioadm)
 );
 
@@ -88,7 +86,6 @@ create table producao (
  id_produto integer not null,
  id_estufa integer not null,
  dataplantio_producao date,
- producaoesperada integer,
  constraint pk_producao primary key(id_produto, id_estufa),
  constraint fk_producao_prod foreign key(id_produto)
 	references produto(id_produto),

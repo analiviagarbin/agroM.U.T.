@@ -184,11 +184,14 @@
                                 <h6 class="mb-3">Dados Pessoais</h6>
                                 <div class="row form-group">
                                     <div class="col-6"><input type="text" placeholder="Nome" class="form-control" name="nomeUsuario" MAXLENGTH=60></div>
-                                    <div class="col-3 input-group">
-                                        <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                        <input type="date" class="form-control" name="datanascUsuario">
-                                    </div>
                                     <div class="col-3"><input type="text" id="cpf" placeholder="CPF" class="form-control" name="cpfUsuario"></div>
+                                    <div class="col-3">
+                                        <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                        <input type="date" class="form-control" name="datanascUsuario" min="1900-01-01" max="2020-12-31">
+                                        </div>
+                                        <small class="help-block form-text">Data de nascimento</small>
+                                    </div>
                                 </div>
                                 <hr>
                                 <h6 class="mb-3">Endereço</h6>

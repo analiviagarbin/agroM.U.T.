@@ -1,9 +1,9 @@
-<% 
-  HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+<%
+    HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 
-  HttpSession sessao = httpServletRequest.getSession();
-  
-  if (sessao.getAttribute("usuarioadm") != null){
+    HttpSession sessao = httpServletRequest.getSession();
+
+    if (sessao.getAttribute("usuarioadm") != null) {
 %>
 <!DOCTYPE html>
 <html>
@@ -54,7 +54,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="box-title">
-                                ${message}
+                                ${menssage}
                             </h4>
                         </div>
                         <div class="card-body">
@@ -65,17 +65,26 @@
                                     <div class="card-body">
                                         <div class="card-header">Funcionários</div>
                                         <div class="card-body">
-                                            <p class="card-text">Cadastre e gerencie os integrantes da sua equipe.</p>
+                                            <p class="card-text">Cadastre os integrantes da sua equipe.</p>
                                             <a href="${pageContext.request.contextPath}/usuarioAdm/cadastrarfuncionario.jsp" class="btn verde-fundo">Cadastrar</a>
-                                        </div></div>
+                                            <hr>
+                                            <p class="card-text">Gerencie seus funcionários atuantes ou inativos</p>
+                                            <a href="${pageContext.request.contextPath}/ListarUsuarioFuncT" class="btn verde-fundo">Ativos</a>
+                                            <a href="${pageContext.request.contextPath}/ListarUsuarioFuncF" class="btn verde-fundo">Inativos</a>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="card text-center border-success" style="width: 18rem;">
                                     <div class="card-body">
                                         <div class="card-header">Produtos</div>
                                         <div class='card-body'>
-                                            <p class="card-text">Controle total dos seus produtos a um click'.</p>
+                                            <p class="card-text">Cadastre seus produtos em um click'.</p>
                                             <a href="${pageContext.request.contextPath}/usuarioAdm/cadastrarproduto.jsp" class="btn verde-fundo">Cadastrar</a>
+                                            <hr>
+                                            <p class="card-text">Listagem dos produtos na palma da mão.</p>
+                                            <a href="${pageContext.request.contextPath}/ListarProdutoT" class="btn verde-fundo">Ativos</a>
+                                            <a href="${pageContext.request.contextPath}/ListarProdutoF" class="btn verde-fundo">Inativos</a>
                                         </div>
                                     </div>
                                 </div>
@@ -84,9 +93,14 @@
                                     <div class="card-body">
                                         <div class="card-header">Estufa</div>
                                         <div class="card-body">
-                                            <p class="card-text">Gerencie suas estufas do modo eficiente e rápido.</p>
+                                            <p class="card-text">Cadastre suas estufas do modo eficiente e rápido.</p>
                                             <a href="${pageContext.request.contextPath}/usuarioAdm/cadastrarestufa.jsp" class="btn verde-fundo">Cadastrar</a>
-                                        </div></div>
+                                            <hr>
+                                            <p class="card-text">A maneira mais simples de gerenciar suas estufas!</p>
+                                            <a href="${pageContext.request.contextPath}/ListarEstufaT" class="btn verde-fundo">Ativas</a>
+                                            <a href="${pageContext.request.contextPath}/ListarEstufaF" class="btn verde-fundo">Inativas</a>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
@@ -106,8 +120,8 @@
     </body>
 </html>
 
-<% 
+<%
     } else {
         ((HttpServletResponse) response).sendRedirect("${pageContext.request.contextPath}/index.jsp");
-    } 
+    }
 %>

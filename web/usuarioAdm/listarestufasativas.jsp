@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="br.com.agromut.model.Estufa"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
@@ -17,8 +18,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/usuarioAdm/assets/css/cs-skin-elastic.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/usuarioAdm/assets/css/style.css">
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+        <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
 
         <style>
             #weatherWidget .currentDesc {
@@ -75,7 +79,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="box-title">Estufas </h4>
+                                <h4 class="box-title">Estufas Ativas</h4>
                             </div>
                             <div class="card-body--">
                                 <div class="table-stats order-table ov-h">
@@ -83,75 +87,86 @@
                                         <thead>
                                             <tr>
                                                 <th class="serial">#</th>
-                                                <th>Descrição </th>
-                                                <th>Capacidade </th>
-                                                <th>Produto </th>
-                                                <th>Temperatura Atual </th>
-                                                <th>Umidade Atual </th>
-                                                <th>Status </th>
-                                                <th>Alterar </th>
+                                                <th>Descrição</th>
+                                                <th>Capacidade</th>
+                                                <th>Inserir</th>
+                                                <th>Status</th>
+                                                <th> </th>
                                             </tr>
                                         </thead>
-                                        <tbody>                                                
+                                        <tbody>    
                                             <%
-                                            List<Estufa> estufas = (List<Estufa>) request.getAttribute("estufas");
-                                            for (Estufa estufa : estufas) { 
+                                                List<Estufa> estufas = (List<Estufa>) request.getAttribute("estufas");
+                                                for (Estufa estufa : estufas) {
                                             %>   
 
                                             <tr>
                                                 <td class="serial"><%=estufa.getIdEstufa()%></td>
                                                 <td class="serial"><%=estufa.getDescricaoEstufa()%></td>
-                                                <td align="center"><%=estufa.getCapacidadeEstufa()%></td>
-                                                <td align="center">Produto<%=estufa.getCapacidadeEstufa()%></td>
+                                                <td align="left"><%=estufa.getCapacidadeEstufa()%></td>
                                                 <td>
-                                                    <button class="btn" data-bs-toggle="modal" data-bs-target="#temperatura" type="button">Monitorar</button>
-                                                </td>
-                                                <td>
-                                                    <button class="btn" data-bs-toggle="modal" data-bs-target="#umidade" type="button">Monitorar</button>
+                                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#inserir" type="button">Inserir </button>
                                                 </td>
                                                 <td>
                                                     <a href="InativarEstufa?idestufa=<%=estufa.getIdEstufa()%>" class="button badge badge-danger">Inativar</a>
                                                 </td>
-                                                <td align="center">
-                                                    <a href="CarregarEstufa?idEstufa=<%=estufa.getIdEstufa()%>" class="button badge badge-primary">Alterar</a>
-                                                </td>
+                                                <td> </td>
                                             </tr>
 
-                                            <% 
+                                            <%
                                                 }
                                             %>
 
-                                        <!-- Modal Monitorar Temp -->
-                                        <div class="modal fade" id="temperatura">
-                                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                            <!-- Modal Inserir -->
+                                        <div class="modal fade" id="inserir">
+                                            <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-body">
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-                                                            <div class="col-lg-12">
-                                                                Aqui
+                                                            <div class="col-lg-12 py-1">
+                                                                <h1 class="display-6 fw-bold lh-1 mb-3 texto">
+                                                                    Inserir Produto
+                                                                </h1>
+                                                                <hr class="verde">
+                                                                <p class="lead">
+                                                                <form method="POST" action="CadastrarProducao" autocomplete="off">
+                                                                    <div class="mb-3">
+                                                                        <div class="mb-2 w-100">
+                                                                            <label class="text-muted" for="produto">Produto:</label>
+                                                                        </div>
+                                                                        <select name="idProduto">
+                                                                            <c:forEach var="produto" items="${nomeprodutos}">
+                                                                                <option value="${produto.idProduto}">
+                                                                                    ${produto.descricaoProduto}
+                                                                                </option>
+                                                                                </c:forEach>
+                                                                        </select>
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <div class="mb-2 w-100">
+                                                                            <label class="text-muted" for="senha">Data plantio:</label>
+                                                                        </div>
+                                                                        <input type="date" class="form-control" name="dataPlantioProducao" required>
+                                                                    </div>
+
+                                                                    <input name="idEstufa" type="text" value="${estufa.idEstufa}">
+                                                                    
+                                                                    <div class="d-flex align-items-center">
+                                                                        <button type="submit" class="btn btn-dark ms-auto verde-fundo">
+                                                                            Inserir
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        <!-- Modal Monitoramento Umidade -->
-                                        <div class="modal fade" id="umidade">
-                                            <div class="modal-dialog modal-dialog-centered modal-xl">
-                                                <div class="modal-content">
-                                                    <div class="modal-body">
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                                        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-                                                            <div class="col-lg-12">
-                                                                Aqui
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                         </tbody>
                                     </table>
                                 </div>

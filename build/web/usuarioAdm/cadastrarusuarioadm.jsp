@@ -10,25 +10,26 @@
         <title>AGROMUT</title>
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/logoreduzida.png">
         <link href="${pageContext.request.contextPath}/assets/css/bootstrap-grid.min.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
         <script src="${pageContext.request.contextPath}/assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
         <script src="usuarioAdm/assets/js/jquery-1.2.6.pack.js" type="text/javascript"></script>
         <script src="usuarioAdm/assets/js/jquery.maskedinput-1.1.4.pack.js" type="text/javascript"></script>
 
-        
+
         <!-- MÁSCARAS FORMS -->
         <script type="text/javascript">
             $(document).ready(function () {
                 $("#cpf").mask("999.999.999-99");
             });
-            
+
             $(document).ready(function () {
                 $("#cnpj").mask("99.999.999/9999-99");
             });
-            
+
             $(document).ready(function () {
                 $("#cep").mask("99999-999");
             });
-            
+
             $(document).ready(function () {
                 $("#celular").mask("(99) 99999-9999");
             });
@@ -98,7 +99,10 @@
                                     <div class="row form-group">
                                         <div class="col-9"><input type="text" placeholder="Nome" class="form-control" name="nomeUsuario" required MAXLENGTH=60></div>
                                         <div class="col-3">
-                                            <input type="date" class="form-control" name="datanascUsuario" required min="1900-01-01" max="2020-12-31">
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                <input type="date" class="form-control" name="datanascUsuario" min="1900-01-01" max="2020-12-31">
+                                            </div>
                                             <small class="help-block form-text">Data de nascimento</small>
                                         </div>
                                         <p>
@@ -158,7 +162,6 @@
             </div>
         </div>
     </div>
-
 
 </body>
 

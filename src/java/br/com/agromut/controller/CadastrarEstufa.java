@@ -22,18 +22,16 @@ public class CadastrarEstufa extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            String capacidadeestufa = request.getParameter("capacidadeEstufa");
-            String temperaturaEstufa = request.getParameter("temperaturaEstufa");
-            String umidadeEstufa = request.getParameter("umidadeEstufa");
+            String descricaoEstufa = request.getParameter("descricaoEstufa");
+            String capacidadeEstufa = request.getParameter("capacidadeEstufa");
             String statusEstufa = request.getParameter("statusEstufa");
             Integer idUsuarioAdm = Integer.parseInt(request.getParameter("idUsuarioAdm"));
 
             String mensagem = null;
 
             Estufa estufa = new Estufa();
-            estufa.setCapacidadeEstufa(capacidadeestufa);
-            estufa.setTemperaturaEstufa(temperaturaEstufa);
-            estufa.setUmidadeEstufa(umidadeEstufa);
+            estufa.setDescricaoEstufa(descricaoEstufa);
+            estufa.setCapacidadeEstufa(capacidadeEstufa);
             estufa.setStatusEstufa(statusEstufa);
             estufa.setIdUsuarioAdm(new UsuarioAdm(idUsuarioAdm));
            
@@ -46,7 +44,7 @@ public class CadastrarEstufa extends HttpServlet {
                     mensagem = "Problemas ao cadastrar o estufa. Verifique os dados informados e tente novamente.";
                 }
                 request.setAttribute("mensagem", mensagem);
-                request.getRequestDispatcher("cadastrarestufa.jsp").forward(request, response);
+                request.getRequestDispatcher("usuarioAdm/cadastrarestufa.jsp").forward(request, response);
 
             } catch (Exception ex) {
                 System.out.println("Problemas no Servlet ao cadastrar estufa! Erro: " + ex.getMessage());

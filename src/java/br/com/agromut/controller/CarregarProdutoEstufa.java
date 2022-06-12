@@ -17,22 +17,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author anali
- */
 @WebServlet(name = "CarregarProdutoEstufa", urlPatterns = {"/CarregarProdutoEstufa"})
 public class CarregarProdutoEstufa extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
@@ -40,6 +27,10 @@ public class CarregarProdutoEstufa extends HttpServlet {
           
             GenericDAO dao = new ProdutoDAOImpl();
             request.setAttribute("nomeprodutos", dao.listar());
+            
+            request.getRequestDispatcher("usuarioAdm/listarestufasativas.jsp").forward(request, response);
+        } catch (Exception e){
+            System.out.println("Problemas ao carregar os dados dos Usuários! Erro: " + e.getMessage());
         }
     }
 

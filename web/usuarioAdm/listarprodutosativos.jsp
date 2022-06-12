@@ -91,7 +91,7 @@
                                 </div>
                                 <div class="card-body--">
                                     <div class="table-stats order-table ov-h">
-                                        <table class="table ">
+                                        <table class="table">
                                             <thead>
                                                 <tr>
                                                     <th class="serial">#</th>
@@ -123,7 +123,7 @@
                                                         <a href="InativarProduto?idproduto=<%=produto.getIdProduto()%>" class="button badge badge-danger">Inativar</a>
                                                     </td>
                                                     <td align="center">
-                                                        <a href="CarregarProduto?idProduto=<%=produto.getIdProduto()%>" class="button badge badge-success">Alterar</a></td>
+                                                        <a href="CarregarProduto?idProduto=<%=produto.getIdProduto()%>" class="button badge badge-primary">Alterar</a></td>
                                                 </tr>
 
                                                 <%

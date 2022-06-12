@@ -120,10 +120,10 @@
                                                     <td align="left"><%=produto.getUmidadeProduto()%></td>
                                                     <td align="left"><%=produto.getUnidadeProduto()%></td>
                                                     <td>
-                                                        <a href="AtivarProduto?idproduto=<%=produto.getIdProduto()%>" class="button badge badge-complete">Ativar</a>
+                                                        <a href="AtivarProduto?idproduto=<%=produto.getIdProduto()%>" class="button badge badge-success">Ativar</a>
                                                     </td>
                                                     <td align="center">
-                                                        <a href="CarregarProduto?idProduto=<%=produto.getIdProduto()%>" class="button badge badge-success">Alterar</a></td>
+                                                        <a href="CarregarProduto?idProduto=<%=produto.getIdProduto()%>" class="button badge badge-primary">Alterar</a></td>
                                                 </tr>
 
                                                 <%

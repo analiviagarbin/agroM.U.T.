@@ -32,19 +32,16 @@ public class EstufaDAOImpl implements GenericDAO {
             Estufa estufa = (Estufa) object;
             PreparedStatement stmt = null;
 
-            String sql = "insert into estufa(capacidade_estufa, temperatura_estufa, umidade_estufa,"
-                    + "status_estufa, id_usuarioadm) values(?, ?, ?, ?, ?);";
+            String sql = "insert into estufa(descricao_estufa, capacidade_estufa, status_estufa, id_usuarioadm) "
+                    + "values(?, ?, ?, ?);";
 
             try {
 
                 stmt = conn.prepareStatement(sql);
-                stmt.setString(1, estufa.getCapacidadeEstufa());
-                stmt.setString(2,estufa.getDescricaoEstufa());
-                stmt.setString(3, estufa.getTemperaturaEstufa());
-                stmt.setString(4, estufa.getUmidadeEstufa());
-                stmt.setString(5, "T");
-                stmt.setInt(6, estufa.getIdEstufa());
-                stmt.setInt(7, estufa.getIdUsuarioAdm().getIdUsuarioAdm());
+                stmt.setString(1,estufa.getDescricaoEstufa());
+                stmt.setString(2, estufa.getCapacidadeEstufa());
+                stmt.setString(3, "T");
+                stmt.setInt(4, estufa.getIdUsuarioAdm().getIdUsuarioAdm());
                 stmt.execute();
                 return true;
 
@@ -117,14 +114,13 @@ public class EstufaDAOImpl implements GenericDAO {
                 estufa.setIdEstufa(rs.getInt("id_estufa"));
                 estufa.setIdUsuarioAdm(new UsuarioAdm(rs.getInt("id_usuarioadm")));
                 estufa.setCapacidadeEstufa(rs.getString("capacidade_estufa"));
-                estufa.setTemperaturaEstufa(rs.getString("temperatura_estufa"));
-                estufa.setUmidadeEstufa(rs.getString("umidade_estufa"));
+                estufa.setDescricaoEstufa(rs.getString("descricao_estufa"));
                 estufa.setStatusEstufa(rs.getString("temperatura_produto"));
 
             }
 
         } catch (Exception ex) {
-            System.out.println("Problemas ao excluir o estufa! Erro" + ex.getMessage());
+            System.out.println("Problemas ao carregar estufa! Erro" + ex.getMessage());
             ex.printStackTrace();
             return false;
         } finally {
@@ -142,17 +138,14 @@ public class EstufaDAOImpl implements GenericDAO {
     public Boolean alterar(Object object) {
         Estufa estufa = (Estufa) object;
         PreparedStatement stmt = null;
-        String sql = "update estufa set capacidade_estufa = ?, temperatura_estufa = ?, umidade_estufa = ?, status_estufa = ?,"
-                + " where id_estufa = ?, id_usuarioadm = ?;";
+        String sql = "update estufa set descricao_estufa = ?, capacidade_estufa = ? where id_estufa = ?, id_usuarioadm = ?;";
 
         try {
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, estufa.getCapacidadeEstufa());
-            stmt.setString(2, estufa.getTemperaturaEstufa());
-            stmt.setString(3, estufa.getUmidadeEstufa());
-            stmt.setString(4, estufa.getStatusEstufa());
-            stmt.setInt(5, estufa.getIdEstufa());
-            stmt.setInt(6, estufa.getIdUsuarioAdm().getIdUsuarioAdm());
+            stmt.setString(1, estufa.getDescricaoEstufa());
+            stmt.setString(2, estufa.getCapacidadeEstufa());
+            stmt.setInt(3, estufa.getIdEstufa());
+            stmt.setInt(4, estufa.getIdUsuarioAdm().getIdUsuarioAdm());
 
             stmt.executeUpdate();
             return true;
@@ -230,7 +223,7 @@ public class EstufaDAOImpl implements GenericDAO {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        String sql = "select e.* from estufa e where e.id_estufa and status_estufa = 'F';";
+        String sql = "select * from estufa where status_estufa = 'F';";
 
         try {
             stmt = conn.prepareStatement(sql);
@@ -241,15 +234,13 @@ public class EstufaDAOImpl implements GenericDAO {
                 estufa.setIdEstufa(rs.getInt("id_estufa"));
                 estufa.setDescricaoEstufa(rs.getString("descricao_estufa"));
                 estufa.setCapacidadeEstufa(rs.getString("capacidade_estufa"));
-                estufa.setTemperaturaEstufa(rs.getString("temperatura_estufa"));
-                estufa.setUmidadeEstufa(rs.getString("umidade_estufa"));
                 estufa.setStatusEstufa(rs.getString("status_estufa"));
                 estufa.setIdUsuarioAdm(new UsuarioAdm(rs.getInt("id_usuarioadm")));
 
                 estufas.add(estufa);
             }
         } catch (Exception ex) {
-            System.out.println("Problemas ao listar usuários administradores inativos! Erro: " + ex.getMessage());
+            System.out.println("Problemas ao listar estufas inativos! Erro: " + ex.getMessage());
             ex.printStackTrace();
 
         } finally {
@@ -268,7 +259,7 @@ public class EstufaDAOImpl implements GenericDAO {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
-        String sql = "select e.* from estufa e where e.id_estufa and status_estufa = 'T';";
+        String sql = "select * from estufa where status_estufa = 'T';";
 
         try {
             stmt = conn.prepareStatement(sql);
@@ -279,15 +270,13 @@ public class EstufaDAOImpl implements GenericDAO {
                 estufa.setIdEstufa(rs.getInt("id_estufa"));
                 estufa.setDescricaoEstufa(rs.getString("descricao_estufa"));
                 estufa.setCapacidadeEstufa(rs.getString("capacidade_estufa"));
-                estufa.setTemperaturaEstufa(rs.getString("temperatura_estufa"));
-                estufa.setUmidadeEstufa(rs.getString("umidade_estufa"));
                 estufa.setStatusEstufa(rs.getString("status_estufa"));
                 estufa.setIdUsuarioAdm(new UsuarioAdm(rs.getInt("id_usuarioadm")));
 
                 estufas.add(estufa);
             }
         } catch (Exception ex) {
-            System.out.println("Problemas ao listar usuários administradores ativos! Erro: " + ex.getMessage());
+            System.out.println("Problemas ao listar estufas! Erro: " + ex.getMessage());
             ex.printStackTrace();
 
         } finally {

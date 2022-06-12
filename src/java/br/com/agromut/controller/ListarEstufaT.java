@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ListarEstufa", urlPatterns = {"/ListarEstufa"})
+@WebServlet(name = "ListarEstufaT", urlPatterns = {"/ListarEstufaT"})
 public class ListarEstufaT extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
