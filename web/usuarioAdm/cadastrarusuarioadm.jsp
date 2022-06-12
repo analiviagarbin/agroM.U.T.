@@ -15,7 +15,6 @@
         <script src="usuarioAdm/assets/js/jquery-1.2.6.pack.js" type="text/javascript"></script>
         <script src="usuarioAdm/assets/js/jquery.maskedinput-1.1.4.pack.js" type="text/javascript"></script>
 
-
         <!-- MÁSCARAS FORMS -->
         <script type="text/javascript">
             $(document).ready(function () {
@@ -123,12 +122,44 @@
                                     <hr>
                                     <h6 class="mb-3">Endereço</h6>
                                     <div class="row form-group">
-                                        <div class="col-1"><input type="text" id="text-input" name="ufUsuario" placeholder="UF" class="form-control" required MAXLENGTH=2></div>
+                                        <div class="col-auto">
+                                            <!-- <input type="text" name="ufUsuario" placeholder="UF" class="form-control" required MAXLENGTH=2> -->
+                                            <select id="uf" name="ufUsuario" placeholder="UF" class="form-select" required>
+                                                <option selected>UF</option>
+                                                <option value="AC">AC</option>
+                                                <option value="AL">AC</option>
+                                                <option value="AP">AP</option>
+                                                <option value="AM">AM</option>
+                                                <option value="BA">BA</option>
+                                                <option value="CE">CE</option>
+                                                <option value="DF">DF</option>
+                                                <option value="ES">ES</option>
+                                                <option value="GO">GO</option>
+                                                <option value="MA">MA</option>
+                                                <option value="MT">MT</option>
+                                                <option value="MS">MS</option>
+                                                <option value="MG">MG</option>
+                                                <option value="PA">PA</option>
+                                                <option value="PB">PB</option>
+                                                <option value="PR">PR</option>
+                                                <option value="PE">PE</option>
+                                                <option value="PI">PI</option>
+                                                <option value="RJ">RJ</option>
+                                                <option value="RN">RN</option>
+                                                <option value="RS">RS</option>
+                                                <option value="RO">RO</option>
+                                                <option value="RR">RR</option>
+                                                <option value="SC">SC</option>
+                                                <option value="SP">SP</option>
+                                                <option value="SE">SE</option>
+                                                <option value="TO">TO</option>
+                                            </select>
+                                        </div>
                                         <div class="col-2"><input type="text" id="cep" name="cepUsuario" placeholder="CEP" class="form-control" required MAXLENGTH=9></div>
-                                        <div class="col-3"><input type="text" id="text-input" name="cidadeUsuario" placeholder="Cidade" class="form-control" required></div>
-                                        <div class="col-2"><input type="text" id="text-input" name="bairroUsuario" placeholder="Bairro" class="form-control" required></div>
-                                        <div class="col-3"><input type="text" id="text-input" name="ruaUsuario" placeholder="Rua" class="form-control" required></div>
-                                        <div class="col-1"><input type="text" id="text-input" name="numUsuario" placeholder="Nº" class="form-control" required></div>
+                                        <div class="col-3"><input type="text" id="cidade" name="cidadeUsuario" placeholder="Cidade" class="form-control" required></div>
+                                        <div class="col-2"><input type="text" id="bairro" name="bairroUsuario" placeholder="Bairro" class="form-control" required></div>
+                                        <div class="col-auto"><input type="text" id="logradouro" name="ruaUsuario" placeholder="Rua" class="form-control" required></div>
+                                        <div class="col-1"><input type="text" id="numero" name="numUsuario" placeholder="Nº" class="form-control" required></div>
                                     </div>
                                     <hr>
                                     <h6 class="mb-3">Contato</h6>

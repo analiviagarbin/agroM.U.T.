@@ -47,7 +47,10 @@
                            aria-expanded="false"><i class="menu-icon fa fa-warehouse"></i><b>ESTUFAS</b></a>
                         <ul class="sub-menu children dropdown-menu">
                             <li>
-                                <i class="menu-icon fa fa-edit"></i><a href="${pageContext.request.contextPath}/usuarioFunc/gerenciarestufa.jsp"> Gerenciar </a>
+                                <i class="menu-icon fa fa-edit"></i><a href="${pageContext.request.contextPath}/ListarProdutoT"> Listar Ativos </a>
+                            </li>
+                            <li>
+                                <i class="menu-icon fa fa-edit"></i><a href="${pageContext.request.contextPath}/ListarProdutoF"> Listar Inativos </a>
                             </li>
                         </ul>
                     </li>
@@ -57,10 +60,13 @@
                            aria-expanded="false"><i class="menu-icon fa fa-leaf"></i><b>PRODUTOS</b></a>
                         <ul class="sub-menu children dropdown-menu">
                             <li>
-                                <i class="menu-icon fa fa-plus-square-o"></i><a href="${pageContext.request.contextPath}/usuarioFunc/cadastrarproduto.jsp"> Cadastrar </a>
+                                <i class="menu-icon fa fa-plus-square-o"></i><a href="${pageContext.request.contextPath}/usuarioAdm/cadastrarproduto.jsp"> Cadastrar </a>
                             </li>
                             <li>
-                                <i class="menu-icon fa fa-edit"></i><a href="${pageContext.request.contextPath}/usuarioFunc/gerenciarproduto.jsp"> Gerenciar </a>
+                                <i class="menu-icon fa fa-edit"></i><a href="${pageContext.request.contextPath}/ListarProdutoT"> Listar Ativos </a>
+                            </li>
+                            <li>
+                                <i class="menu-icon fa fa-edit"></i><a href="${pageContext.request.contextPath}/ListarProdutoF"> Listar Inativos </a>
                             </li>
                         </ul>
                     </li>

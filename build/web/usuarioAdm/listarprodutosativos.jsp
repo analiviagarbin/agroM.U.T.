@@ -89,7 +89,7 @@
                                 <div class="card-body">
                                     <h4 class="box-title">Produtos Ativos</h4>
                                 </div>
-                                <div class="card-body--">
+                                <div class="card-body">
                                     <div class="table-stats order-table ov-h">
                                         <table class="table">
                                             <thead>

@@ -102,10 +102,10 @@
                                         <input type="text" class="form-control"  placeholder="Tempo de Cultivo (Dias)" name="tempocultivoProduto">
                                     </div>
                                     <div class="col-4 input-group">
-                                        <input type="text" class="form-control"  placeholder="Temperatura de Cultivo" name="temperaturaProduto">
+                                        <input type="text" class="form-control"  placeholder="Temperatura de Cultivo (ºC)" name="temperaturaProduto">
                                     </div>
                                     <div class="col-4 input-group">
-                                        <input type="text" class="form-control"  placeholder="Umidade de Cultivo" name="umidadeProduto">
+                                        <input type="text" class="form-control"  placeholder="Umidade de Cultivo (%)" name="umidadeProduto">
                                     </div>
                                 </div>
                         </div>

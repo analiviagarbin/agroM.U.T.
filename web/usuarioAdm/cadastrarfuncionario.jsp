@@ -1,11 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<% 
-  HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+<%
+    HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 
-  HttpSession sessao = httpServletRequest.getSession();
-  
-  if (sessao.getAttribute("usuarioadm") != null){
+    HttpSession sessao = httpServletRequest.getSession();
+
+    if (sessao.getAttribute("usuarioadm") != null) {
 %>
 
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
         <meta name="description" content="AGROMUT">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/usuarioAdm/assets/images/logoreduzida.png">
-
+        <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <script src="assets/js/jquery-1.2.6.pack.js" type="text/javascript"></script>
         <script src="assets/js/jquery.maskedinput-1.1.4.pack.js" type="text/javascript"></script>
 
@@ -187,8 +187,8 @@
                                     <div class="col-3"><input type="text" id="cpf" placeholder="CPF" class="form-control" name="cpfUsuario"></div>
                                     <div class="col-3">
                                         <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                        <input type="date" class="form-control" name="datanascUsuario" min="1900-01-01" max="2020-12-31">
+                                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                            <input type="date" class="form-control" name="datanascUsuario" min="1900-01-01" max="2020-12-31">
                                         </div>
                                         <small class="help-block form-text">Data de nascimento</small>
                                     </div>
@@ -196,11 +196,43 @@
                                 <hr>
                                 <h6 class="mb-3">Endereço</h6>
                                 <div class="row form-group">
-                                    <div class="col-1"><input type="text" id="text-input" name="ufUsuario" placeholder="UF" MAXLENGTH=2 class="form-control"></div>
+                                    <div class="col-auto">
+                                        <!-- <input type="text" name="ufUsuario" placeholder="UF" class="form-control" required MAXLENGTH=2> -->
+                                        <select id="uf" name="ufUsuario" placeholder="UF" class="form-select" required>
+                                            <option selected>UF</option>
+                                            <option value="AC">AC</option>
+                                            <option value="AL">AC</option>
+                                            <option value="AP">AP</option>
+                                            <option value="AM">AM</option>
+                                            <option value="BA">BA</option>
+                                            <option value="CE">CE</option>
+                                            <option value="DF">DF</option>
+                                            <option value="ES">ES</option>
+                                            <option value="GO">GO</option>
+                                            <option value="MA">MA</option>
+                                            <option value="MT">MT</option>
+                                            <option value="MS">MS</option>
+                                            <option value="MG">MG</option>
+                                            <option value="PA">PA</option>
+                                            <option value="PB">PB</option>
+                                            <option value="PR">PR</option>
+                                            <option value="PE">PE</option>
+                                            <option value="PI">PI</option>
+                                            <option value="RJ">RJ</option>
+                                            <option value="RN">RN</option>
+                                            <option value="RS">RS</option>
+                                            <option value="RO">RO</option>
+                                            <option value="RR">RR</option>
+                                            <option value="SC">SC</option>
+                                            <option value="SP">SP</option>
+                                            <option value="SE">SE</option>
+                                            <option value="TO">TO</option>
+                                        </select>
+                                    </div>
                                     <div class="col-2"><input type="text" id="cep" name="cepUsuario" placeholder="CEP" MAXLENGTH=9 class="form-control"></div>
                                     <div class="col-3"><input type="text" id="text-input" name="cidadeUsuario" placeholder="Cidade" class="form-control"></div>
-                                    <div class="col-2"><input type="text" id="text-input" name="bairroUsuario" placeholder="Bairro" class="form-control"></div>
-                                    <div class="col-3"><input type="text" id="text-input" name="ruaUsuario" placeholder="Rua" class="form-control"></div>
+                                    <div class="col-auto"><input type="text" id="text-input" name="bairroUsuario" placeholder="Bairro" class="form-control"></div>
+                                    <div class="col-auto"><input type="text" id="text-input" name="ruaUsuario" placeholder="Rua" class="form-control"></div>
                                     <div class="col-1"><input type="text" id="text-input" name="numUsuario" placeholder="Nº" class="form-control"></div>
                                 </div>
                                 <hr>
@@ -213,7 +245,7 @@
                                 <h6 class="mb-3">Salário</h6>
                                 <div class="row form-group">
                                     <div class="col-4">
-                                        <input type="text" name="salarioUsuarioFunc" placeholder="R$" id="salario" class="form-control" onKeyPress="return(MascaraMoeda(this,'.',',',event))">
+                                        <input type="text" name="salarioUsuarioFunc" placeholder="R$" id="salario" class="form-control" onKeyPress="return(MascaraMoeda(this, '.', ',', event))">
                                     </div>
                                     <div class="col-4">
                                         <input type="hidden" name="codigoUsuario" placeholder="" value="FUNC" class="form-control">
@@ -249,8 +281,8 @@
     </body>
 </html>
 
-<% 
+<%
     } else {
         ((HttpServletResponse) response).sendRedirect("${pageContext.request.contextPath}/index.jsp");
-    } 
+    }
 %>
