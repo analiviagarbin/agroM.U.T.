@@ -186,7 +186,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        de alimentos orgânicos.\n");
       out.write("                    </p>\n");
       out.write("                    <div class=\"d-grid gap-2 d-md-flex justify-content-md-start mb-5\">\n");
-      out.write("                        <a href=\"#\">\n");
+      out.write("                        <a href=\"arduino.jsp\">\n");
       out.write("                            <button type=\"button\" class=\"btn btn-dark btn-lg px-4 me-md-2 verde-fundo\">\n");
       out.write("                                Arduíno\n");
       out.write("                            </button>\n");

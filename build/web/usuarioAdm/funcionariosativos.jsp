@@ -115,12 +115,12 @@
                                                 <td align="left"><%=usuarioFunc.getNomeUsuario()%></td>
                                                 <td align="left"><%=usuarioFunc.getCpfUsuario()%></td>
                                                 <td align="left"><%=usuarioFunc.getEmailUsuario()%></td>
-                                                <td align="left"><%=usuarioFunc.getCelularUsuario()%></td>
+                                                <td align="left"><%=usuarioFunc.getSalarioUsuarioFunc()%></td>
                                                 <td align="left">
                                                     <a href="InativarFunc?idusuariofunc=<%=usuarioFunc.getIdUsuarioFunc()%>" class="button badge badge-danger">Desativar</a>
                                                 </td>
                                                 <td align="left">
-                                                    <a href="AlterarFunc?idusuariofunc=<%=usuarioFunc.getIdUsuarioFunc()%>" class="button badge badge-success">Alterar</a>
+                                                    <a href="${pageContext.request.contextPath}/CarregarUsuarioFunc?idUsuarioFunc=<%=usuarioFunc.getIdUsuarioFunc()%>" class="button badge badge-success">Alterar</a>
                                                 </td>
                                             </tr>
 

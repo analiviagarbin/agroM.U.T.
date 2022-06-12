@@ -5,17 +5,27 @@ import java.sql.Date;
 public class Producao {
     private Estufa idEstufa;
     private Produto idProduto;
-    private Date dataplantioProducao;
-    private Integer producaoesperadaProducao;
+    private Date dataPlantioProducao;
+    private Integer producaoEsperada;
+
+    
 
     public Producao() {
     }
 
-    public Producao(Estufa idEstufa, Produto idProduto, Date dataplantioProducao, Integer producaoesperadaProducao) {
+    public Producao(Estufa idEstufa, Produto idProduto, Date dataPlantioProducao, Integer producaoEsperada) {
         this.idEstufa = idEstufa;
         this.idProduto = idProduto;
-        this.dataplantioProducao = dataplantioProducao;
-        this.producaoesperadaProducao = producaoesperadaProducao;
+        this.dataPlantioProducao = dataPlantioProducao;
+        this.producaoEsperada = producaoEsperada;
+    }
+
+    public Producao(Estufa idEstufa) {
+        this.idEstufa = idEstufa;
+    }
+
+    public Producao(Produto idProduto) {
+        this.idProduto = idProduto;
     }
 
     public Estufa getIdEstufa() {
@@ -34,22 +44,23 @@ public class Producao {
         this.idProduto = idProduto;
     }
 
-    public Date getDataplantioProducao() {
-        return dataplantioProducao;
+    public Date getDataPlantioProducao() {
+        return dataPlantioProducao;
     }
 
-    public void setDataplantioProducao(Date dataplantioProducao) {
-        this.dataplantioProducao = dataplantioProducao;
+    public void setDataPlantioProducao(Date dataPlantioProducao) {
+        this.dataPlantioProducao = dataPlantioProducao;
     }
 
-    public Integer getProducaoesperadaProducao() {
-        return producaoesperadaProducao;
+    public Integer getProducaoEsperada() {
+        return producaoEsperada;
     }
 
-    public void setProducaoesperadaProducao(Integer producaoesperadaProducao) {
-        this.producaoesperadaProducao = producaoesperadaProducao;
+    public void setProducaoEsperada(Integer producaoEsperada) {
+        this.producaoEsperada = producaoEsperada;
     }
-    
+
+   
     
     
 }

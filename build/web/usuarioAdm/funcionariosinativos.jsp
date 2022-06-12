@@ -101,7 +101,6 @@
                                                     <th>Celular </th>
                                                     <th>Salário </th>
                                                     <th>Status </th>
-                                                    <th>Alterar </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -115,12 +114,9 @@
                                                 <td align="left"><%=usuarioFunc.getNomeUsuario()%></td>
                                                 <td align="left"><%=usuarioFunc.getCpfUsuario()%></td>
                                                 <td align="left"><%=usuarioFunc.getEmailUsuario()%></td>
-                                                <td align="left"><%=usuarioFunc.getCelularUsuario()%></td>
+                                                <td align="left"><%=usuarioFunc.getSalarioUsuarioFunc()%></td>
                                                 <td align="left">
                                                     <a href="AtivarFunc?idusuariofunc=<%=usuarioFunc.getIdUsuarioFunc()%>" class="button badge badge-complete">Ativar</a>
-                                                </td>
-                                                <td align="left">
-                                                    <a href="AlterarFunc?idusuariofunc=<%=usuarioFunc.getIdUsuarioFunc()%>" class="button badge badge-success">Alterar</a>
                                                 </td>
                                             </tr>
 

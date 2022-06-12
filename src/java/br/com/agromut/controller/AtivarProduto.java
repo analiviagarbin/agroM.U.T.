@@ -48,7 +48,7 @@ public class AtivarProduto extends HttpServlet {
 
             ProdutoDAOImpl dao = new ProdutoDAOImpl();
             if (dao.ativarproduto(produto)) {
-                mensagem = "Produto ativada!";
+                mensagem = "Produto ativado!";
             } else {
                 mensagem = "Problemas ao ativar usuário";
             }

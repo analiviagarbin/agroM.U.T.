@@ -8,6 +8,7 @@ import br.com.agromut.util.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
@@ -162,6 +163,7 @@ public class UsuarioFuncDAOImpl implements GenericDAO {
                 usuarioFunc.setNomeUsuario(rs.getString("nome_usuario"));
                 usuarioFunc.setEmailUsuario(rs.getString("email_usuario"));
                 usuarioFunc.setCelularUsuario(rs.getString("celular_usuario"));
+                usuarioFunc.setSalarioUsuarioFunc(rs.getString("salario_usuariofunc"));
                 usuarioFunc.setCpfUsuario(rs.getString("cpf_usuario"));
                 usuarioFunc.setStatusUsuarioFunc(rs.getString("status_usuariofunc"));
                 usuarioFunc.setIdUsuario(rs.getInt("id_usuario"));
@@ -233,7 +235,45 @@ public class UsuarioFuncDAOImpl implements GenericDAO {
 
     @Override
     public Object carregar(int idObject) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        UsuarioFunc usuariofunc = null;
+        String sql = "select u.*, uf.* from usuario u, usuariofunc uf where u.id_usuario = uf.id_usuario and uf.id_usuario = ?;";
+        // String sql = "select * from aluno where idaluno = ?;";
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, idObject);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                usuariofunc = new UsuarioFunc();
+                usuariofunc.setIdUsuarioFunc(rs.getInt("id_usuariofunc"));
+                usuariofunc.setNomeUsuario(rs.getString("nome_usuario"));
+                usuariofunc.setEmailUsuario(rs.getString("email_usuario"));
+                usuariofunc.setCelularUsuario(rs.getString("celular_usuario"));
+                usuariofunc.setLoginUsuario(rs.getString("login_usuario"));
+                usuariofunc.setSenhaUsuario(rs.getString("senha_usuario"));
+                usuariofunc.setCepUsuario(rs.getString("cep_usuario"));
+                usuariofunc.setUfUsuario(rs.getString("uf_usuario"));
+                usuariofunc.setCidadeUsuario(rs.getString("cidade_usuario"));
+                usuariofunc.setBairroUsuario(rs.getString("bairro_usuario"));
+                usuariofunc.setRuaUsuario(rs.getString("rua_usuario"));
+                usuariofunc.setNumUsuario(rs.getString("num_usuario"));
+                usuariofunc.setSalarioUsuarioFunc(rs.getString("salario_usuario"));
+                usuariofunc.setIdUsuario(rs.getInt("id_usuario"));
+            }
+        } catch (SQLException ex) {
+            System.err.println("Problemas ao carregar usuario func! Erro: " + ex.getMessage());
+            ex.printStackTrace();
+        } finally {
+            try {
+                ConnectionFactory.closeConnection(conn, stmt, rs);
+            } catch (Exception e) {
+                System.err.println("Problemas ao fechar a conexão! Erro: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+        return usuariofunc;
     }
     
 }

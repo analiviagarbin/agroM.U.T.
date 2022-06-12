@@ -67,7 +67,6 @@
                                         <div class="card-body">
                                             <p class="card-text">Cadastre e gerencie os integrantes da sua equipe.</p>
                                             <a href="${pageContext.request.contextPath}/usuarioAdm/cadastrarfuncionario.jsp" class="btn verde-fundo">Cadastrar</a>
-                                            <a href="${pageContext.request.contextPath}/usuarioAdm/gerenciarusuariofunc.jsp" class="btn verde-fundo">Gerenciar</a>
                                         </div></div>
                                 </div>
 
@@ -77,7 +76,6 @@
                                         <div class='card-body'>
                                             <p class="card-text">Controle total dos seus produtos a um click'.</p>
                                             <a href="${pageContext.request.contextPath}/usuarioAdm/cadastrarproduto.jsp" class="btn verde-fundo">Cadastrar</a>
-                                            <a href="${pageContext.request.contextPath}/usuarioAdm/gerenciarproduto.jsp" class="btn verde-fundo">Gerenciar</a>
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +86,6 @@
                                         <div class="card-body">
                                             <p class="card-text">Gerencie suas estufas do modo eficiente e rápido.</p>
                                             <a href="${pageContext.request.contextPath}/usuarioAdm/cadastrarestufa.jsp" class="btn verde-fundo">Cadastrar</a>
-                                            <a href="${pageContext.request.contextPath}/usuarioAdm/gerenciarestufa.jsp" class="btn verde-fundo">Gerenciar</a>
                                         </div></div>
                                 </div>
 
