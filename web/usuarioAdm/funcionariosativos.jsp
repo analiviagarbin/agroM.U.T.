@@ -120,7 +120,7 @@
                                                     <a href="InativarFunc?idusuariofunc=<%=usuarioFunc.getIdUsuarioFunc()%>" class="button badge badge-danger">Desativar</a>
                                                 </td>
                                                 <td align="left">
-                                                    <a href="${pageContext.request.contextPath}/CarregarUsuarioFunc?idUsuarioFunc=<%=usuarioFunc.getIdUsuarioFunc()%>" class="button badge badge-success">Alterar</a>
+                                                    <a href="${pageContext.request.contextPath}/CarregarUsuarioFunc?idusuariofunc=<%=usuarioFunc.getIdUsuarioFunc()%>" class="button badge badge-primary">Alterar</a>
                                                 </td>
                                             </tr>
 

@@ -116,7 +116,7 @@
                                                 <td align="left"><%=usuarioFunc.getEmailUsuario()%></td>
                                                 <td align="left"><%=usuarioFunc.getSalarioUsuarioFunc()%></td>
                                                 <td align="left">
-                                                    <a href="AtivarFunc?idusuariofunc=<%=usuarioFunc.getIdUsuarioFunc()%>" class="button badge badge-complete">Ativar</a>
+                                                    <a href="AtivarFunc?idusuariofunc=<%=usuarioFunc.getIdUsuarioFunc()%>" class="button badge badge-success">Ativar</a>
                                                 </td>
                                             </tr>
 

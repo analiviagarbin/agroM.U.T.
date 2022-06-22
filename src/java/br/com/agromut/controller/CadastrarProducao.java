@@ -2,12 +2,10 @@ package br.com.agromut.controller;
 
 import br.com.agromut.dao.GenericDAO;
 import br.com.agromut.dao.ProducaoDAOImpl;
-import br.com.agromut.dao.ProdutoDAOImpl;
 import br.com.agromut.model.Estufa;
 import br.com.agromut.model.Producao;
 import br.com.agromut.model.Produto;
-import br.com.agromut.model.UsuarioAdm;
-import br.com.agromut.util.Conversoes;
+import br.com.agromut.utill.Conversoes;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
@@ -27,7 +25,7 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
 
             Integer idProduto = Integer.parseInt(request.getParameter("idProduto"));
             Integer idEstufa = Integer.parseInt(request.getParameter("idEstufa"));
-            Date dataPlantioProducao = Conversoes.converterData(request.getParameter("dataplantioProducao"));
+            Date dataPlantioProducao = Conversoes.converterData(request.getParameter("dataPlantioProducao"));
             
 
             String mensagem = null;
@@ -35,7 +33,7 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
             Producao producao = new Producao();
             producao.setProdutoProducao(new Produto(idProduto));
             producao.setIdEstufa(new Estufa (idEstufa));
-            producao.setDataPlantioProducao((java.sql.Date) dataPlantioProducao);
+            producao.setDataPlantioProducao(dataPlantioProducao);
 
             try {
 
@@ -46,7 +44,7 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
                     mensagem = "Problemas ao cadastrar produção. Verifique os dados informados e tente novamente.";
                 }
                 request.setAttribute("mensagem", mensagem);
-                request.getRequestDispatcher("CarregarProdutoEstufa").forward(request, response);
+                request.getRequestDispatcher("ListarEstufaT").forward(request, response);
 
             } catch (Exception ex) {
                 System.out.println("Problemas no Servlet ao cadastrar produto! Erro: " + ex.getMessage());

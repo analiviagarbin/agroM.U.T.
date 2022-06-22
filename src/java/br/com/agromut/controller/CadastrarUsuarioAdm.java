@@ -4,7 +4,7 @@ import br.com.agromut.dao.GenericDAO;
 import br.com.agromut.dao.UsuarioAdmDAOImpl;
 import br.com.agromut.dao.UsuarioDAOImpl;
 import br.com.agromut.model.UsuarioAdm;
-import br.com.agromut.util.Conversoes;
+import br.com.agromut.utill.Conversoes;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;

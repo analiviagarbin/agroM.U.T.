@@ -13,10 +13,20 @@ public final class listarestufasativas_jsp extends org.apache.jasper.runtime.Htt
 
   private static java.util.List<String> _jspx_dependants;
 
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
+
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
+  }
+
+  public void _jspInit() {
+    _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+  }
+
+  public void _jspDestroy() {
+    _jspx_tagPool_c_forEach_var_items.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -45,6 +55,7 @@ public final class listarestufasativas_jsp extends org.apache.jasper.runtime.Htt
 
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -68,8 +79,11 @@ public final class listarestufasativas_jsp extends org.apache.jasper.runtime.Htt
       out.write("        <link rel=\"stylesheet\" href=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("/usuarioAdm/assets/css/style.css\">\n");
-      out.write("        <link href=\"assets/css/bootstrap.min.css\" rel=\"stylesheet\" type=\"text/css\"/>\n");
       out.write("        <script src=\"assets/js/bootstrap.min.js\" type=\"text/javascript\"></script>\n");
+      out.write("        <link href=\"https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css\" rel=\"stylesheet\">\n");
+      out.write("        <link href=\"https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css\" rel=\"stylesheet\">\n");
+      out.write("        <link href=\"https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css\" rel=\"stylesheet\" />\n");
+      out.write("        <link href=\"https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css\" rel=\"stylesheet\" />\n");
       out.write("\n");
       out.write("        <style>\n");
       out.write("            #weatherWidget .currentDesc {\n");
@@ -128,28 +142,26 @@ public final class listarestufasativas_jsp extends org.apache.jasper.runtime.Htt
       out.write("                    <div class=\"col-lg-12\">\n");
       out.write("                        <div class=\"card\">\n");
       out.write("                            <div class=\"card-body\">\n");
-      out.write("                                <h4 class=\"box-title\">Estufas </h4>\n");
+      out.write("                                <h4 class=\"box-title\">Estufas Ativas</h4>\n");
       out.write("                            </div>\n");
-      out.write("                            <div class=\"card-body--\">\n");
+      out.write("                            <div class=\"card-body\">\n");
       out.write("                                <div class=\"table-stats order-table ov-h\">\n");
-      out.write("                                    <table class=\"table \">\n");
+      out.write("                                    <table class=\"table\">\n");
       out.write("                                        <thead>\n");
       out.write("                                            <tr>\n");
       out.write("                                                <th class=\"serial\">#</th>\n");
-      out.write("                                                <th>Descrição </th>\n");
-      out.write("                                                <th>Capacidade </th>\n");
-      out.write("                                                <th>Produto </th>\n");
-      out.write("                                                <th>Temperatura Atual </th>\n");
-      out.write("                                                <th>Umidade Atual </th>\n");
-      out.write("                                                <th>Status </th>\n");
+      out.write("                                                <th>Descrição</th>\n");
+      out.write("                                                <th>Capacidade</th>\n");
+      out.write("                                                <th>Inserir</th>\n");
+      out.write("                                                <th>Status</th>\n");
       out.write("                                                <th>Alterar </th>\n");
       out.write("                                            </tr>\n");
       out.write("                                        </thead>\n");
-      out.write("                                        <tbody>                                                \n");
+      out.write("                                        <tbody>    \n");
       out.write("                                            ");
 
-                                            List<Estufa> estufas = (List<Estufa>) request.getAttribute("estufas");
-                                            for (Estufa estufa : estufas) { 
+                                                List<Estufa> estufas = (List<Estufa>) request.getAttribute("estufas");
+                                                for (Estufa estufa : estufas) {
                                             
       out.write("   \n");
       out.write("\n");
@@ -160,67 +172,84 @@ public final class listarestufasativas_jsp extends org.apache.jasper.runtime.Htt
       out.write("                                                <td class=\"serial\">");
       out.print(estufa.getDescricaoEstufa());
       out.write("</td>\n");
-      out.write("                                                <td align=\"center\">");
-      out.print(estufa.getCapacidadeEstufa());
-      out.write("</td>\n");
-      out.write("                                                <td align=\"center\">Produto");
+      out.write("                                                <td align=\"left\">");
       out.print(estufa.getCapacidadeEstufa());
       out.write("</td>\n");
       out.write("                                                <td>\n");
-      out.write("                                                    <button class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#temperatura\" type=\"button\">Monitorar</button>\n");
-      out.write("                                                </td>\n");
-      out.write("                                                <td>\n");
-      out.write("                                                    <button class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#umidade\" type=\"button\">Monitorar</button>\n");
+      out.write("                                                    <a href=\"usuarioAdm/inserir.jsp?idestufa=");
+      out.print(estufa.getIdEstufa());
+      out.write("\" data-bs-toggle=\"modal\"\n");
+      out.write("                                                       data-bs-target=\"#inserir\" >Inserir</a>\n");
       out.write("                                                </td>\n");
       out.write("                                                <td>\n");
       out.write("                                                    <a href=\"InativarEstufa?idestufa=");
       out.print(estufa.getIdEstufa());
       out.write("\" class=\"button badge badge-danger\">Inativar</a>\n");
       out.write("                                                </td>\n");
-      out.write("                                                <td align=\"center\">\n");
-      out.write("                                                    <a href=\"CarregarEstufa?idEstufa=");
+      out.write("                                                <td>\n");
+      out.write("                                                    <a href=\"AlterarEstufa?idestufa=");
       out.print(estufa.getIdEstufa());
-      out.write("\" class=\"button badge badge-primary\">Alterar</a>\n");
+      out.write("\" class=\"button badge badge-\">Alterar</a>\n");
       out.write("                                                </td>\n");
       out.write("                                            </tr>\n");
       out.write("\n");
       out.write("                                            ");
- 
+
                                                 }
                                             
       out.write("\n");
       out.write("\n");
-      out.write("                                        <!-- Modal Monitorar Temp -->\n");
-      out.write("                                        <div class=\"modal fade\" id=\"temperatura\">\n");
-      out.write("                                            <div class=\"modal-dialog modal-dialog-centered modal-xl\">\n");
+      out.write("                                            <!-- Modal Inserir -->\n");
+      out.write("                                        <div class=\"modal fade\" id=\"inserir\">\n");
+      out.write("                                            <div class=\"modal-dialog modal-dialog-centered\">\n");
       out.write("                                                <div class=\"modal-content\">\n");
       out.write("                                                    <div class=\"modal-body\">\n");
       out.write("                                                        <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\"></button>\n");
       out.write("                                                        <div class=\"row flex-lg-row-reverse align-items-center g-5 py-5\">\n");
-      out.write("                                                            <div class=\"col-lg-12\">\n");
-      out.write("                                                                Aqui\n");
+      out.write("                                                            <div class=\"col-lg-12 py-1\">\n");
+      out.write("                                                                <h1 class=\"display-6 fw-bold lh-1 mb-3 texto\">\n");
+      out.write("                                                                    Inserir Produto\n");
+      out.write("                                                                </h1>\n");
+      out.write("                                                                <hr class=\"verde\">\n");
+      out.write("                                                                <p class=\"lead\">\n");
+      out.write("                                                                <form method=\"POST\" action=\"CadastrarProducao\" autocomplete=\"off\">\n");
+      out.write("                                                                    <div class=\"mb-3\">\n");
+      out.write("                                                                        <div class=\"mb-2 w-100\">\n");
+      out.write("                                                                            <label class=\"text-muted\" for=\"produto\">Produto:</label>\n");
+      out.write("                                                                        </div>\n");
+      out.write("                                                                        <select name=\"idProduto\">\n");
+      out.write("                                                                            ");
+      if (_jspx_meth_c_forEach_0(_jspx_page_context))
+        return;
+      out.write("\n");
+      out.write("                                                                        </select>\n");
+      out.write("                                                                    </div>\n");
+      out.write("\n");
+      out.write("                                                                    <div class=\"mb-3\">\n");
+      out.write("                                                                        <div class=\"mb-2 w-100\">\n");
+      out.write("                                                                            <label class=\"text-muted\" for=\"senha\">Data plantio:</label>\n");
+      out.write("                                                                        </div>\n");
+      out.write("                                                                        <input type=\"date\" class=\"form-control\" name=\"dataPlantioProducao\" required>\n");
+      out.write("                                                                    </div>\n");
+      out.write("\n");
+      out.write("                                                                    <input name=\"idEstufa\" type=\"text\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${estufa.idEstufa}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\">\n");
+      out.write("\n");
+      out.write("                                                                    <div class=\"d-flex align-items-center\">\n");
+      out.write("                                                                        <button type=\"submit\" class=\"btn btn-dark ms-auto verde-fundo\">\n");
+      out.write("                                                                            Inserir\n");
+      out.write("                                                                        </button>\n");
+      out.write("                                                                    </div>\n");
+      out.write("                                                                </form>\n");
       out.write("                                                            </div>\n");
       out.write("                                                        </div>\n");
       out.write("                                                    </div>\n");
+      out.write("\n");
       out.write("                                                </div>\n");
       out.write("                                            </div>\n");
-      out.write("                                        </div>\n");
-      out.write("                                        \n");
-      out.write("                                        <!-- Modal Monitoramento Umidade -->\n");
-      out.write("                                        <div class=\"modal fade\" id=\"umidade\">\n");
-      out.write("                                            <div class=\"modal-dialog modal-dialog-centered modal-xl\">\n");
-      out.write("                                                <div class=\"modal-content\">\n");
-      out.write("                                                    <div class=\"modal-body\">\n");
-      out.write("                                                        <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\"></button>\n");
-      out.write("                                                        <div class=\"row flex-lg-row-reverse align-items-center g-5 py-5\">\n");
-      out.write("                                                            <div class=\"col-lg-12\">\n");
-      out.write("                                                                Aqui\n");
-      out.write("                                                            </div>\n");
-      out.write("                                                        </div>\n");
-      out.write("                                                    </div>\n");
-      out.write("                                                </div>\n");
-      out.write("                                            </div>\n");
-      out.write("                                        </div>\n");
+      out.write("                                        </div> -->\n");
+      out.write("\n");
       out.write("                                        </tbody>\n");
       out.write("                                    </table>\n");
       out.write("                                </div>\n");
@@ -254,5 +283,50 @@ public final class listarestufasativas_jsp extends org.apache.jasper.runtime.Htt
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
+  }
+
+  private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_0.setParent(null);
+    _jspx_th_c_forEach_0.setVar("produto");
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${produtosestufa}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
+      if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\n");
+          out.write("                                                                                <option value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${produto.idProduto}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\">\n");
+          out.write("                                                                                    ");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${produto.idProduto}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write(" - ");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${produto.descricaoProduto}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\n");
+          out.write("                                                                                </option>\n");
+          out.write("                                                                            ");
+          int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_0.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
+    }
+    return false;
   }
 }

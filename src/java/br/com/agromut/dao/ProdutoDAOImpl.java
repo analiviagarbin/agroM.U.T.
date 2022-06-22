@@ -3,7 +3,7 @@ package br.com.agromut.dao;
 import br.com.agromut.model.Estufa;
 import br.com.agromut.model.Produto;
 import br.com.agromut.model.UsuarioAdm;
-import br.com.agromut.util.ConnectionFactory;
+import br.com.agromut.utill.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -318,7 +318,7 @@ public class ProdutoDAOImpl implements GenericDAO {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         
-        String sql = "select * from produto order by descricao_produto;";
+        String sql = "select * from produto where status_produto = 'T' order by descricao_produto;";
         
         try {
             stmt = conn.prepareStatement(sql);
@@ -327,7 +327,7 @@ public class ProdutoDAOImpl implements GenericDAO {
             while (rs.next()) {
                 Produto produto = new Produto();
                 produto.setIdProduto(rs.getInt("id_produto"));
-                produto.setDescricaoProduto("descricao_produto");
+                produto.setDescricaoProduto(rs.getString("descricao_produto"));
                 nomeprodutos.add(produto);
             }   
             } catch (Exception ex) {

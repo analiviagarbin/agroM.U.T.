@@ -77,8 +77,8 @@
                                 <input name="idUsuarioAdm" type="hidden" value="${sessionScope.idusuarioadm}">
                                 <h6 class="mb-3">Dados da Estufa</h6>
                                 <div class="row form-group">
-                                    <div class="col-6"><input type="text" placeholder="Descrição" class="form-control" name="descricaoEstufa" MAXLENGTH=60></div>
-                                    <div class="col-6"><input type="text" placeholder="Capacidade (Produtos)" class="form-control" name="capacidadeEstufa" MAXLENGTH=60></div>
+                                    <div class="col-6"><input type="text" placeholder="Descrição" class="form-control" name="descricaoEstufa" MAXLENGTH=60 required></div>
+                                    <div class="col-6"><input type="text" placeholder="Capacidade (Produtos)" class="form-control" name="capacidadeEstufa" MAXLENGTH=60 required></div>
                                 </div>
                         </div>
                         <button type="submit"class="btn ms-auto btn-sm verde-fundo">Cadastrar</button>

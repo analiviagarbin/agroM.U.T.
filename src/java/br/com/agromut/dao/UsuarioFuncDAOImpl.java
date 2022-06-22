@@ -4,7 +4,7 @@ import br.com.agromut.model.Estufa;
 import br.com.agromut.model.UsuarioAdm;
 import br.com.agromut.model.UsuarioFunc;
 import br.com.agromut.model.UsuarioFunc;
-import br.com.agromut.util.ConnectionFactory;
+import br.com.agromut.utill.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

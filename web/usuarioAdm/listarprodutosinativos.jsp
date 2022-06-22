@@ -102,7 +102,6 @@
                                                     <th>Umidade C. </th>
                                                     <th>Unidade </th>
                                                     <th>Status </th>
-                                                    <th>Alterar </th>
                                                 </tr>
                                             </thead>
                                             <tbody>                                                
@@ -122,8 +121,6 @@
                                                     <td>
                                                         <a href="AtivarProduto?idproduto=<%=produto.getIdProduto()%>" class="button badge badge-success">Ativar</a>
                                                     </td>
-                                                    <td align="center">
-                                                        <a href="CarregarProduto?idProduto=<%=produto.getIdProduto()%>" class="button badge badge-primary">Alterar</a></td>
                                                 </tr>
 
                                                 <%

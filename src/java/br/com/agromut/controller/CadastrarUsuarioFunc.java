@@ -3,7 +3,7 @@ package br.com.agromut.controller;
 import br.com.agromut.dao.GenericDAO;
 import br.com.agromut.dao.UsuarioFuncDAOImpl;
 import br.com.agromut.model.UsuarioFunc;
-import br.com.agromut.util.Conversoes;
+import br.com.agromut.utill.Conversoes;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;

@@ -104,7 +104,7 @@
                                                 <td class="serial"><%=estufa.getDescricaoEstufa()%></td>
                                                 <td align="left"><%=estufa.getCapacidadeEstufa()%></td>
                                                 <td>
-                                                    <a href="AtivarEstufa?idestufa=<%=estufa.getIdEstufa()%>" class="button badge badge-danger">Ativar</a>
+                                                    <a href="AtivarEstufa?idestufa=<%=estufa.getIdEstufa()%>" class="button badge badge-success">Ativar</a>
                                                 </td>
                                                 <td> </td>
                                             </tr>

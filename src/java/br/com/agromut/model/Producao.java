@@ -1,6 +1,6 @@
 package br.com.agromut.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Producao {
     private Estufa idEstufa;

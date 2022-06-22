@@ -1,8 +1,8 @@
 package br.com.agromut.dao;
 
 import br.com.agromut.model.UsuarioAdm;
-import br.com.agromut.util.Conversoes;
-import br.com.agromut.util.ConnectionFactory;
+import br.com.agromut.utill.Conversoes;
+import br.com.agromut.utill.ConnectionFactory;
 import java.sql.Connection;
 import java.util.Date;
 import java.sql.PreparedStatement;

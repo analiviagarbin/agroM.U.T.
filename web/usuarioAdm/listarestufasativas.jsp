@@ -1,10 +1,12 @@
+<%@page import="br.com.agromut.model.Producao"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="br.com.agromut.model.Estufa"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta charset="iso-8859-1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>AGROMUT</title>
         <meta name="description" content="AGROMUT">
@@ -23,47 +25,48 @@
         <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
-
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        
         <style>
-            #weatherWidget .currentDesc {
-                color: #ffffff !important;
+            .verde-fundo {
+                background-color: rgb(23, 143, 43);
+                border-color: rgb(23, 143, 43);
+                color: white;
             }
 
-            .traffic-chart {
-                min-height: 335px;
+            .verde-fundo:focus {
+                color: rgb(23, 143, 43);
+                border-color: rgb(23, 143, 43);
+                background-color: white;
             }
 
-            #flotPie1 {
-                height: 150px;
+            .verde-fundo:hover {
+                color: rgb(23, 143, 43);
+                border-color: rgb(23, 143, 43);
+                background-color: white;
             }
 
-            #flotPie1 td {
-                padding: 3px;
+            .options:hover{
+                background-color: rgb(23, 143, 43);
+                color: white;
             }
 
-            #flotPie1 table {
-                top: 20px !important;
-                right: -10px !important;
+            .botao-verde {
+                color: rgb(23, 143, 43);
+                border-color: rgb(23, 143, 43);
             }
 
-            .chart-container {
-                display: table;
-                min-width: 270px;
-                text-align: left;
-                padding-top: 10px;
-                padding-bottom: 10px;
+            .verde {
+                color: rgb(23, 143, 43);
             }
 
-            #flotLine5 {
-                height: 105px;
+            .verde:hover {
+                color: rgb(141, 252, 23);
             }
-
-            #flotBarChart {
-                height: 150px;
-            }
-
-            #cellPaiChart {
-                height: 160px;
+            
+            .select-verde:hover{
+                background-color: rgb(23, 143, 43);
+                color: white;
             }
         </style>
     </head>
@@ -105,15 +108,45 @@
                                                 <td class="serial"><%=estufa.getDescricaoEstufa()%></td>
                                                 <td align="left"><%=estufa.getCapacidadeEstufa()%></td>
                                                 <td>
-                                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#inserir" type="button">Inserir </button>
+                                                    <button class="btn btn-primary" onclick="copiaridestufa(<%=estufa.getIdEstufa()%>);" data-bs-toggle="modal" data-bs-target="#inserir" type="button">Inserir</button>
+                                                    <script>
+                                                        //Copiar id da estufa
+                                                        function copiaridestufa(idestufa) {
+                                                            document.getElementById('idEstufa').value = idestufa;
+                                                        }
+                                                    </script>
+
                                                 </td>
                                                 <td>
                                                     <a href="InativarEstufa?idestufa=<%=estufa.getIdEstufa()%>" class="button badge badge-danger">Inativar</a>
                                                 </td>
-                                                <td> </td>
+                                                <td> </td>                                        
+                                            </tr>
+                                            
+                                            <tr>
+                                                <th class="serial">#</th>
+                                                <th>Produto</th>
+                                                <th>Data Plantio</th>
                                             </tr>
 
                                             <%
+                                                List<Producao> producaoestufa = (List<Producao>) request.getAttribute("produtosestufasalvo");
+                                                for (Producao producao : producaoestufa) {
+                                                    if (producao.getIdEstufa().getIdEstufa() == estufa.getIdEstufa()) {
+                                            %>   
+                                            <tr>
+                                                <td class="serial"><%=producao.getIdEstufa().getIdEstufa()%></td>
+                                                <td class="serial"><%=producao.getProdutoProducao().getDescricaoProduto()%></td>
+                                                <td align="left">
+                                                    <fmt:formatDate pattern = "dd-MM-yyyy" value = "<%=producao.getDataPlantioProducao()%>" />
+                                                </td> 
+                                                <td></td>
+                                            </tr>
+
+
+                                            <%
+                                                        }
+                                                    }
                                                 }
                                             %>
 
@@ -135,26 +168,26 @@
                                                                         <div class="mb-2 w-100">
                                                                             <label class="text-muted" for="produto">Produto:</label>
                                                                         </div>
-                                                                        <select name="idProduto">
-                                                                            <c:forEach var="produto" items="${nomeprodutos}">
+                                                                        <select name="idProduto" class="form-select">
+                                                                            <c:forEach var="produto" items="${produtosestufa}">
                                                                                 <option value="${produto.idProduto}">
-                                                                                    ${produto.descricaoProduto}
+                                                                                    ${produto.idProduto} - ${produto.descricaoProduto}
                                                                                 </option>
-                                                                                </c:forEach>
+                                                                            </c:forEach>
                                                                         </select>
                                                                     </div>
 
                                                                     <div class="mb-3">
                                                                         <div class="mb-2 w-100">
-                                                                            <label class="text-muted" for="senha">Data plantio:</label>
+                                                                            <label class="text-muted" for="dataPlantioProducao">Data plantio:</label>
                                                                         </div>
                                                                         <input type="date" class="form-control" name="dataPlantioProducao" required>
                                                                     </div>
 
-                                                                    <input name="idEstufa" type="text" value="${estufa.idEstufa}">
-                                                                    
+                                                                    <input name="idEstufa" id="idEstufa" type="hidden" value="">
+
                                                                     <div class="d-flex align-items-center">
-                                                                        <button type="submit" class="btn btn-dark ms-auto verde-fundo">
+                                                                        <button type="submit" class="btn ms-auto verde-fundo">
                                                                             Inserir
                                                                         </button>
                                                                     </div>
@@ -175,6 +208,7 @@
                     </div>
                 </div>
             </div>
+
 
             <jsp:include page="footer.jsp"/>
 

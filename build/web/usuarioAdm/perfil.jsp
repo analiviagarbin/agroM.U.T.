@@ -293,7 +293,7 @@
                                             <input type="hidden" id="text-input" name="idUsuario" value="${usuarioperfil.idUsuario}" class="form-control">
                                         </div>
                                         <br>
-                                        <button type="submit" class="btn ms-auto btn-sm verde-fundo">Alterar</button>
+                                        <button type="submit" class="btn ms-auto btn-sm verde-fundo">Alterar e Sair</button>
                                     </form>
                                 </div>
                             </div>

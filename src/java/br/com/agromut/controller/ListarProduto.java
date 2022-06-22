@@ -1,8 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package br.com.agromut.controller;
 
-import br.com.agromut.dao.EstufaDAOImpl;
-import br.com.agromut.dao.GenericDAO;
-import br.com.agromut.dao.ProducaoDAOImpl;
 import br.com.agromut.dao.ProdutoDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,34 +14,38 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ListarEstufaT", urlPatterns = {"/ListarEstufaT"})
-public class ListarEstufaT extends HttpServlet {
+/**
+ *
+ * @author AlunoRemoto
+ */
+@WebServlet(name = "ListarProduto", urlPatterns = {"/ListarProduto"})
+public class ListarProduto extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-
-            try {
-                EstufaDAOImpl dao = new EstufaDAOImpl();
-                request.setAttribute("estufas", dao.listarAtivosEstufa());
-
-                ProdutoDAOImpl daop = new ProdutoDAOImpl();
-                request.setAttribute("produtosestufa", daop.listar());
-                
-                ProducaoDAOImpl daopd = new ProducaoDAOImpl();
-                request.setAttribute("produtosestufasalvo", daopd.listarprodutoestufa());
-
-                request.getRequestDispatcher("usuarioAdm/listarestufasativas.jsp").forward(request, response);
-            } catch (Exception e) {
-                System.out.println("problemas ao listar estufas! Erro: " + e.getMessage());
-                e.printStackTrace();
-            }
-
+        //Integer idEstufa = Integer.parseInt(request.getParameter("idestufa"));
+        try {
+            ProdutoDAOImpl dao = new ProdutoDAOImpl();
+            request.setAttribute("produtosestufa", dao.listar());
+            //request.setAttribute("idestufaproduto", idEstufa);
+            request.getRequestDispatcher("usuarioAdm/listarestufasinativas.jsp").forward(request, response);
+        } catch (Exception e) {
+            System.out.println("problemas ao listar produtos! Erro: " + e.getMessage());
+            e.printStackTrace();
         }
+
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

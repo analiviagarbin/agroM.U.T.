@@ -99,13 +99,13 @@
                                 <h6 class="mb-3">Cultivo</h6>
                                 <div class="row form-group">
                                     <div class="col-4 input-group">
-                                        <input type="text" class="form-control"  placeholder="Tempo de Cultivo (Dias)" name="tempocultivoProduto">
+                                        <input type="text" class="form-control"  placeholder="Tempo de Cultivo (Dias)" name="tempocultivoProduto" required>
                                     </div>
                                     <div class="col-4 input-group">
-                                        <input type="text" class="form-control"  placeholder="Temperatura de Cultivo (ºC)" name="temperaturaProduto">
+                                        <input type="text" class="form-control"  placeholder="Temperatura de Cultivo (ºC)" name="temperaturaProduto" required>
                                     </div>
                                     <div class="col-4 input-group">
-                                        <input type="text" class="form-control"  placeholder="Umidade de Cultivo (%)" name="umidadeProduto">
+                                        <input type="text" class="form-control"  placeholder="Umidade de Cultivo (%)" name="umidadeProduto" required>
                                     </div>
                                 </div>
                         </div>
